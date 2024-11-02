@@ -8,4 +8,6 @@ public interface IMicroService {
 
   MicroOutputDTO crearMicro(@RequestBody MicroInputDTO microInputDTO);
 
+  MicroOutputDTO buscarMicroById(Long id);
+
 }

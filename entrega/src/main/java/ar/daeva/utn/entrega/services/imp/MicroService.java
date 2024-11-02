@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class MicroService implements IMicroService {
   @Autowired
@@ -27,6 +29,21 @@ public class MicroService implements IMicroService {
     MicroOutputDTO microToDtoOutput = MicroMapper.INSTANCE.microToDtoOutput(this.microRepository.save(nuevoMicro));
 
     return  microToDtoOutput;
+  }
+
+  @Override
+  public MicroOutputDTO buscarMicroById(Long id) {
+
+    Optional<Micro> micro = this.microRepository.findById(id);
+
+    if(micro.isPresent()){
+
+      MicroOutputDTO microToDtoOutput = MicroMapper.INSTANCE.microToDtoOutput(micro.get());
+      return microToDtoOutput;
+
+    }
+
+    return null;
   }
 
 }
