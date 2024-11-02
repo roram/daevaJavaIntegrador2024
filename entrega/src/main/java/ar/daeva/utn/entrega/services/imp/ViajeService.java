@@ -16,7 +16,8 @@ public class ViajeService implements ItViajesService {
 
     @Override
     public List<ViajeOutput> buscarTodos() {
-        return (List<ViajeOutput>) (List<ViajeOutput>) this.viajeRepository.findAll().stream().map();
+        //return (List<ViajeOutput>) (List<ViajeOutput>) this.viajeRepository.findAll().stream().map();
+        return null;
     }
 
     @Override

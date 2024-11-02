@@ -5,12 +5,13 @@ import ar.daeva.utn.entrega.models.entities.Viaje;
 
 public class ViajeMapper {
 
-    public static ViajeOutput crearAPartirDe(Viaje viaje) {
+    /*public static ViajeOutput crearAPartirDe(Viaje viaje) {
         return ViajeOutput
                 .builder()
                 .Id(viaje.getClass())
                 .Micro(viaje.getClass())
                 .FechaHoraLlegada(viaje.getClass())
                 .FechaHoraPartida(viaje.getClass());
-    }
+
+    }*/
 }

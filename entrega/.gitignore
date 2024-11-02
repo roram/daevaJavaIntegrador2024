@@ -1,3 +1,7 @@
+### Mis propiedades
+local.properties
+env.properties
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

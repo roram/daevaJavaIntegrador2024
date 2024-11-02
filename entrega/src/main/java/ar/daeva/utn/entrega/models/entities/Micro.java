@@ -14,7 +14,7 @@ import lombok.Setter;
 public class Micro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @Column
     private String marca;
     @Column

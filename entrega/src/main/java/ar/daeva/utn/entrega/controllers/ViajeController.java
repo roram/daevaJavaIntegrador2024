@@ -27,9 +27,10 @@ public class ViajeController {
     public ResponseEntity<String> cargarViaje(@RequestBody ViajeInput viaje){
 
 
-        return  ResponseEntity
+        /*return  ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(this.viajesService.crearViaje(viaje).toString());
+                .body(this.viajesService.crearViaje(viaje).toString());*/
+        return null;
 
 
     }
