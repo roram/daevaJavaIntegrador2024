@@ -5,8 +5,18 @@ import lombok.Data;
 
 @Data
 public class ViajeInput {
-    private String Micro;
-    private String FechaHoraPartida;
-    private String FechaHoraLlegada;
+    private Micro micro;
+    private String fechaHoraPartida;
+    private String fechaHoraLlegada;
+
+    @Override
+    public String toString(){
+
+        return
+                this.micro.toString() + " " +
+                "Fecha Hora de Partida: " + this.fechaHoraPartida + " " +
+                "Fecha Hora de Llegada: " + this.fechaHoraLlegada;
+
+    }
 
 }

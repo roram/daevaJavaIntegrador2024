@@ -2,6 +2,7 @@ package ar.daeva.utn.entrega.services.imp;
 
 import ar.daeva.utn.entrega.datos.input.ViajeInput;
 import ar.daeva.utn.entrega.datos.output.ViajeOutput;
+import ar.daeva.utn.entrega.models.entities.Viaje;
 import ar.daeva.utn.entrega.models.repositories.ViajeRepository;
 import ar.daeva.utn.entrega.services.ItViajesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,15 @@ public class ViajeService implements ItViajesService {
 
     @Override
     public int crearViaje(ViajeInput viaje) {
+
+        System.out.println("INTENTO GUARDAR");
+        System.out.println(viaje.toString());
+        Viaje nuevoViaje = new Viaje();
+
+        nuevoViaje.equals(viaje);
+
+        viajeRepository.save(nuevoViaje);
+
         return 0;
     }
 

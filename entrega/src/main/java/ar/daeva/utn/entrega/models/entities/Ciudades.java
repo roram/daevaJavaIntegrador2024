@@ -18,4 +18,11 @@ public class Ciudades {
     @Column
     private Integer kms;
 
+    @Override
+    public String toString(){
+        return
+                "Nombre ciudad: " + this.name + " " +
+                "Distancia en KMS: " + this.kms + " ";
+    }
+
 }

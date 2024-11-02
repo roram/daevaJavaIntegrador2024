@@ -32,4 +32,13 @@ public class Viaje {
     @Column
     private Double distancia;
 
+    @Override
+    public String toString(){
+        return
+                this.micro.toString() + " " +
+                "Fecha Hora Partida: " + this.fechaHoraPartida.toString() + " " +
+                "Fecha Hora de Llegada: " + this.fechaHoraLlegada.toString() + " " +
+                "Distancia: " + this.distancia;
+    }
+
 }

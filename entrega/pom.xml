@@ -13,6 +13,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>entrega</name>
   <description>entregaProyectoDaeva</description>
+
   <url/>
   <licenses>
     <license/>
@@ -28,12 +29,35 @@
   </scm>
   <properties>
     <java.version>17</java.version>
+    <org.mapstruct.version>1.6.2</org.mapstruct.version>
   </properties>
   <dependencies>
+
+    <!-- TIENE QUE IR PRIMERO LOMBOK O NO CREA EL MAPPER BIEN -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+
+    <!-- DEPENDENCIAS PARA MAPPEAR DTO A CLASE -->
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct</artifactId>
+      <version>${org.mapstruct.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mapstruct</groupId>
+      <artifactId>mapstruct-processor</artifactId>
+      <version>${org.mapstruct.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
@@ -44,16 +68,13 @@
       <artifactId>mysql-connector-j</artifactId>
       <scope>runtime</scope>
     </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <optional>true</optional>
-    </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
@@ -73,10 +94,12 @@
       <version>1.18.34</version>
       <scope>provided</scope>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
+
   </dependencies>
 
   <build>

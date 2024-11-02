@@ -23,4 +23,13 @@ public class Micro {
     private String patente;
     @Column
     private Integer cant_asientos;
+
+    @Override
+    public String toString(){
+        return
+                "Marca: " + this.marca + " " +
+                "Modelo: " + this.modelo + " " +
+                "Patente: " + this.patente + " " +
+                "Cantidad de asientos: " + this.cant_asientos;
+    }
 }

@@ -26,11 +26,16 @@ public class ViajeController {
     @PostMapping
     public ResponseEntity<String> cargarViaje(@RequestBody ViajeInput viaje){
 
+        String valido = "CARGADO";
 
-        /*return  ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(this.viajesService.crearViaje(viaje).toString());*/
-        return null;
+        System.out.println("ENDPOINT DE cargarViaje");
+        System.out.println(viaje.toString());
+
+        this.viajesService.crearViaje(viaje);
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(valido);
 
 
     }
