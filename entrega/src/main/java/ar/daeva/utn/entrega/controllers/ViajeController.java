@@ -24,13 +24,34 @@ public class ViajeController {
                 .body(this.viajesService.buscarTodos());
     }
     @PostMapping
-    public ResponseEntity<String> cargarViaje(@RequestBody ViajeInput turno){
+    public ResponseEntity<String> cargarViaje(@RequestBody ViajeInput viaje){
 
 
         return  ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(this.viajesService.crearTurno(turno).toString());
+                .body(this.viajesService.crearViaje(viaje).toString());
 
 
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<ViajeOutput> obtenerViajePorId(@PathVariable Long id){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.viajesService.buscarPorId(id));
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarTurno(@PathVariable Long id){
+        this.viajesService.eliminarViaje(id);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .build();
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<ViajeOutput> putViaje(@RequestBody ViajeInput viajeNuevo, @PathVariable Long id){
+
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.viajesService.modificarViaje(viajeNuevo, id));
     }
 }
