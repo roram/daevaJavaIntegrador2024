@@ -1,6 +1,7 @@
 package ar.daeva.utn.entrega.services.imp;
 
 import ar.daeva.utn.entrega.datos.input.MicroInputDTO;
+import ar.daeva.utn.entrega.datos.output.MicroOutputDTO;
 import ar.daeva.utn.entrega.mapper.MicroMapper;
 import ar.daeva.utn.entrega.models.entities.Micro;
 import ar.daeva.utn.entrega.models.repositories.MicroRepository;
@@ -16,23 +17,16 @@ public class MicroService implements IMicroService {
   private MicroRepository microRepository;
 
   @Override
-  public ResponseEntity<String> crearMicro(MicroInputDTO microInputDTO) {
+  public MicroOutputDTO crearMicro(MicroInputDTO microInputDTO) {
 
-
-    System.out.println("DATOS DE INGREO DE DTO DEL MICRO");
-    System.out.println(microInputDTO.toString());
-
+    // Del MicroInputDTO lo transformo a la entidad de la clase Micro
     Micro nuevoMicro = MicroMapper.INSTANCE.dtoToMicro(microInputDTO);
 
-    System.out.println("CREANDO NUEVO MICRO DE MAPPER");
-    System.out.println(nuevoMicro.toString());
-    System.out.println("CLASE");
-    System.out.println(nuevoMicro.getClass());
+    // Utilizo el mapper que crea una clase Micro y la utilizo para guardar en la base de datos y
+    // lo que me devuelve lo guardo y lo utilizo como respuesta.
+    MicroOutputDTO microToDtoOutput = MicroMapper.INSTANCE.microToDtoOutput(this.microRepository.save(nuevoMicro));
 
-    return  ResponseEntity
-            .status(HttpStatus.CREATED)
-            .body(this.microRepository.save(nuevoMicro).toString());
-
+    return  microToDtoOutput;
   }
 
 }

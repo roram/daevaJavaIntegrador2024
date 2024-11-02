@@ -27,6 +27,7 @@ public class Micro {
     @Override
     public String toString(){
         return
+                "ID: " + this.id + " " +
                 "Marca: " + this.marca + " " +
                 "Modelo: " + this.modelo + " " +
                 "Patente: " + this.patente + " " +

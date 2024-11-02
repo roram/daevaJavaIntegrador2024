@@ -1,8 +1,13 @@
 package ar.daeva.utn.entrega.datos.input;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@Builder
 public class MicroInputDTO {
 
   private String marca;

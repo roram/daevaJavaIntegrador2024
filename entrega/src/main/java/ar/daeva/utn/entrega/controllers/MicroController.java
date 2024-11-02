@@ -1,6 +1,7 @@
 package ar.daeva.utn.entrega.controllers;
 
 import ar.daeva.utn.entrega.datos.input.MicroInputDTO;
+import ar.daeva.utn.entrega.datos.output.MicroOutputDTO;
 import ar.daeva.utn.entrega.mapper.MicroMapper;
 import ar.daeva.utn.entrega.services.IMicroService;
 import ar.daeva.utn.entrega.services.imp.MicroService;
@@ -20,16 +21,11 @@ public class MicroController {
   private MicroService microService;
 
   @PostMapping
-  public ResponseEntity<String> cargarMicro(@RequestBody MicroInputDTO microInputDTO){
-    System.out.println("CARGO NUEVO MICRO");
+  public ResponseEntity<MicroOutputDTO> cargarMicro(@RequestBody MicroInputDTO microInputDTO){
 
-    System.out.println(microInputDTO.toString());
+    //Respondo el código 201 de creado y la entidad Micro que voy a guardar
+    return ResponseEntity.status(HttpStatus.CREATED).body(this.microService.crearMicro(microInputDTO));
 
-    this.microService.crearMicro(microInputDTO);
-
-    return ResponseEntity
-            .status(HttpStatus.OK)
-            .body(microInputDTO.toString());
   }
 
 }
