@@ -27,32 +27,6 @@ public class ViajeService implements ItViajesService {
     private MicroRepository microRepository;
 
     @Override
-    public List<ViajeOutput> buscarTodos(Long id) {
-        //return (List<ViajeOutput>) (List<ViajeOutput>) this.viajeRepository.findAll().stream().map();
-
-
-        return null;
-    }
-
-    @Override
-    public List<ViajeOutput> buscarTodos() {
-        return List.of();
-    }
-
-    @Override
-    public ViajeOutput buscarPorId(Long id) {
-
-        Optional<Viaje> viaje = this.viajeRepository.findById(id);
-
-        if(viaje.isPresent()) {
-            ViajeOutput viajeOutput = ViajeMapper.INSTANCE.viajeToDtoOutput(viaje.get());
-            return viajeOutput;
-
-        }
-        return null;
-    }
-
-    @Override
     public ViajeOutput crearViaje(ViajeInput viajeInput) {
 
         Optional<Micro> micro = this.microRepository.findById(viajeInput.getMicroId());
@@ -77,13 +51,52 @@ public class ViajeService implements ItViajesService {
     }
 
     @Override
-    public void eliminarViaje(Long id) {
-        viajeRepository.deleteById(id);
+    public ViajeOutput buscarPorId(Long id) {
 
+        Optional<Viaje> viaje = this.viajeRepository.findById(id);
+
+        if(viaje.isPresent()) {
+            ViajeOutput viajeOutput = ViajeMapper.INSTANCE.viajeToDtoOutput(viaje.get());
+            return viajeOutput;
+
+        }
+        return null;
     }
 
     @Override
-    public ViajeOutput modificarViaje(ViajeInput viaje, Long id) {
+    public void eliminarViaje(Long id) {
+        viajeRepository.deleteById(id);
+    }
+
+    @Override
+    public ViajeOutput modificarViaje(ViajeInput viajeInput, Long id) {
+        Optional<Viaje> busquedaViaje = this.viajeRepository.findById(id);
+        Optional<Micro> micro = this.microRepository.findById(viajeInput.getMicroId());
+
+        if(busquedaViaje.isPresent() && micro.isPresent()){
+
+            ViajeMapper.INSTANCE.update(busquedaViaje.get(), viajeInput);
+
+            busquedaViaje.get().setMicro(micro.get());
+
+            System.out.println("VIAJE ACTUALIZADO");
+            System.out.println(busquedaViaje.get());
+
+            ViajeOutput viajeOutput = ViajeMapper.INSTANCE.viajeToDtoOutput(busquedaViaje.get());
+
+            this.viajeRepository.save(busquedaViaje.get());
+
+            return viajeOutput;
+
+        }
+
         return null;
     }
+
+    @Override
+    public List<ViajeOutput> buscarTodos() {
+        return List.of();
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package ar.daeva.utn.entrega.controllers;
 
 import ar.daeva.utn.entrega.datos.input.ViajeInput;
+import ar.daeva.utn.entrega.datos.output.MicroOutputDTO;
 import ar.daeva.utn.entrega.datos.output.ViajeOutput;
 import ar.daeva.utn.entrega.services.ItViajesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,11 @@ public class ViajeController {
     @PutMapping("/{id}")
     public ResponseEntity<ViajeOutput> putViaje(@RequestBody ViajeInput viajeNuevo, @PathVariable Long id){
 
+        ViajeOutput viajeOutput = this.viajesService.modificarViaje(viajeNuevo, id);
+
+        if(viajeOutput == null){
+            return  ResponseEntity.notFound().build();
+        }
 
         return ResponseEntity
                 .status(HttpStatus.OK)

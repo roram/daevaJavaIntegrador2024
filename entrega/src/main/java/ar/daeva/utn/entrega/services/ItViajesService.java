@@ -7,11 +7,10 @@ import java.util.List;
 
 public interface ItViajesService  {
 
-    List<ViajeOutput> buscarTodos(Long id);
-
-    List<ViajeOutput> buscarTodos();
-    ViajeOutput buscarPorId(Long id);
     ViajeOutput crearViaje(ViajeInput viaje);
+    ViajeOutput buscarPorId(Long id);
+    ViajeOutput modificarViaje(ViajeInput viajeInput, Long id);
     void eliminarViaje(Long id);
-    ViajeOutput modificarViaje(ViajeInput viaje, Long id);
+    List<ViajeOutput> buscarTodos();
+
 }
