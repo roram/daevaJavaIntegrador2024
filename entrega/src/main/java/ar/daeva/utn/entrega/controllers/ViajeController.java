@@ -24,19 +24,11 @@ public class ViajeController {
                 .body(this.viajesService.buscarTodos());
     }
     @PostMapping
-    public ResponseEntity<String> cargarViaje(@RequestBody ViajeInput viaje){
-
-        String valido = "CARGADO";
-
-        System.out.println("ENDPOINT DE cargarViaje");
-        System.out.println(viaje.toString());
-
-        this.viajesService.crearViaje(viaje);
+    public ResponseEntity<ViajeOutput> cargarViaje(@RequestBody ViajeInput viaje){
 
         return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(valido);
-
+                .status(HttpStatus.CREATED)
+                .body(this.viajesService.crearViaje(viaje));
 
     }
     @GetMapping("/{id}")

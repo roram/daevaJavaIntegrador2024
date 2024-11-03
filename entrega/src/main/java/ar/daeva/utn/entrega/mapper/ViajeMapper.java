@@ -4,8 +4,10 @@ package ar.daeva.utn.entrega.mapper;
 import ar.daeva.utn.entrega.datos.input.ViajeInput;
 import ar.daeva.utn.entrega.datos.output.ViajeOutput;
 import ar.daeva.utn.entrega.models.entities.Viaje;
+import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+@Mapper(componentModel = "spring")
 public interface ViajeMapper {
 
     // Se tiene que crear esta constante, sino no se puede utilizar
