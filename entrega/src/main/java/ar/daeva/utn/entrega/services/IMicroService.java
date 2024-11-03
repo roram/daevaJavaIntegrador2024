@@ -10,4 +10,7 @@ public interface IMicroService {
 
   MicroOutputDTO buscarMicroById(Long id);
 
+    void eliminarMicro(Long id);
+
+  MicroOutputDTO modificarMicro(MicroInputDTO microInputDTO, Long id);
 }

@@ -46,7 +46,7 @@ public class ViajeController {
                 .body(this.viajesService.buscarPorId(id));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarTurno(@PathVariable Long id){
+    public ResponseEntity<Void> eliminarViaje(@PathVariable Long id){
         this.viajesService.eliminarViaje(id);
         return ResponseEntity
                 .status(HttpStatus.OK)

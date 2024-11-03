@@ -7,8 +7,6 @@ import ar.daeva.utn.entrega.models.entities.Micro;
 import ar.daeva.utn.entrega.models.repositories.MicroRepository;
 import ar.daeva.utn.entrega.services.IMicroService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -43,6 +41,15 @@ public class MicroService implements IMicroService {
 
     }
 
+    return null;
+  }
+  @Override
+  public void eliminarMicro(Long id) {
+    microRepository.deleteById(id);
+    
+  }
+  @Override
+  public MicroOutputDTO modificarMicro(MicroInputDTO microInputDTO, Long id) {
     return null;
   }
 
