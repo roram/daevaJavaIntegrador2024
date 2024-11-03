@@ -25,6 +25,15 @@ public class Viaje {
     @OneToOne
     private Ciudades ciudades;
 
+    public Viaje(){}
+
+    public Viaje(Long id, Micro micro, LocalDate fechaHoraPartida, LocalDate fechaHoraLlegada, Ciudades ciudades){
+        this.id = id;
+        this.micro = micro;
+        this.fechaHoraPartida = fechaHoraPartida;
+        this.fechaHoraLlegada = fechaHoraLlegada;
+        this.ciudades = ciudades;
+    }
 
     @Override
     public String toString(){
