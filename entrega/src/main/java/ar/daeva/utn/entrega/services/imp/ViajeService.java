@@ -44,17 +44,10 @@ public class ViajeService implements ItViajesService {
 
     @Override
     public ViajeOutput crearViaje(ViajeInput viaje) {
+
         Viaje nuevoViaje = ViajeMapper.INSTANCE.dtoToViaje(new ViajeInput());
+
         ViajeOutput viajeOutput = ViajeMapper.INSTANCE.viajeToDtoOutput(this.viajeRepository.save(nuevoViaje));
-
-
-        System.out.println("INTENTO GUARDAR");
-        System.out.println(viaje.toString());
-        //Viaje nuevoViaje = new Viaje();
-
-        //nuevoViaje.equals(viaje);
-
-        //viajeRepository.save(nuevoViaje);
 
         return viajeOutput;
     }

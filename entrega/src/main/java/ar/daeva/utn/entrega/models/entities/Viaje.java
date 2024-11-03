@@ -25,7 +25,6 @@ public class Viaje {
     private Ciudades ciudades;
 
 
-
     @Override
     public String toString(){
         return

@@ -4,6 +4,7 @@ import ar.daeva.utn.entrega.datos.input.MicroInputDTO;
 import ar.daeva.utn.entrega.datos.output.MicroOutputDTO;
 import ar.daeva.utn.entrega.models.entities.Micro;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
@@ -17,4 +18,7 @@ public interface MicroMapper {
 
   // Creo la clase MicroOutputDTO utilizanco la clase Micro para la respuesta
   MicroOutputDTO microToDtoOutput(Micro micro);
+
+  // Actualizo el objeto para guardarlo con sus nuevos datos
+  void update(@MappingTarget Micro micro, MicroInputDTO microInputDTO);
 }

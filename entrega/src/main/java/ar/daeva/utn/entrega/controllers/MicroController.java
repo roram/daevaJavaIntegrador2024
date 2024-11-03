@@ -3,6 +3,7 @@ package ar.daeva.utn.entrega.controllers;
 import ar.daeva.utn.entrega.datos.input.MicroInputDTO;
 import ar.daeva.utn.entrega.datos.output.MicroOutputDTO;
 import ar.daeva.utn.entrega.mapper.MicroMapper;
+import ar.daeva.utn.entrega.models.entities.Micro;
 import ar.daeva.utn.entrega.services.IMicroService;
 import ar.daeva.utn.entrega.services.imp.MicroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,18 @@ public class MicroController {
     return ResponseEntity
             .status(HttpStatus.OK)
             .build();
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<MicroOutputDTO> actualizarMicro(@RequestBody MicroInputDTO microInputDTO, @PathVariable Long id){
+    MicroOutputDTO microOutputDTO = this.microService.modificarMicro(microInputDTO, id);
+
+    if(microOutputDTO == null){
+      return  ResponseEntity.notFound().build();
+    }
+
+    return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(microOutputDTO);
   }
 }

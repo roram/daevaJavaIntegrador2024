@@ -45,11 +45,29 @@ public class MicroService implements IMicroService {
   }
   @Override
   public void eliminarMicro(Long id) {
-    microRepository.deleteById(id);
+    this.microRepository.deleteById(id);
     
   }
   @Override
   public MicroOutputDTO modificarMicro(MicroInputDTO microInputDTO, Long id) {
+
+    Optional<Micro> busquedaMicro = this.microRepository.findById(id);
+
+    if(busquedaMicro.isPresent()){
+
+      // Este mapper actualiza el objeto encontrado del micro con los elementos del microInputDTO
+      MicroMapper.INSTANCE.update(busquedaMicro.get(), microInputDTO);
+
+      // A apartir del objeto actualizado creo el MicroOutputDTO para responder
+      MicroOutputDTO microOutputDTO = MicroMapper.INSTANCE.microToDtoOutput(busquedaMicro.get());
+
+      // Si encuentro el micro lo guardo con un id, eso hace que actualice el micro existente.
+      this.microRepository.save(busquedaMicro.get());
+
+      return microOutputDTO;
+
+    }
+
     return null;
   }
 

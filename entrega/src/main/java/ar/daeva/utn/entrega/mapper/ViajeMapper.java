@@ -11,9 +11,9 @@ public interface ViajeMapper {
     // Se tiene que crear esta constante, sino no se puede utilizar
     ViajeMapper INSTANCE = Mappers.getMapper(ViajeMapper.class);
 
-    // Creo la clase Micro utilizando la clase MicronInputDTO para guardarlo en la base de datos
+    // Creo la clase Viaje utilizando la clase ViajeInput para guardarlo en la base de datos
     Viaje dtoToViaje(ViajeInput viajeInputDto);
 
-    // Creo la clase MicroOutputDTO utilizanco la clase Micro para la respuesta
+    // Creo la clase ViajeOutput utilizanco la clase Viaje para la respuesta
     ViajeOutput viajeToDtoOutput(Viaje viaje);
 }

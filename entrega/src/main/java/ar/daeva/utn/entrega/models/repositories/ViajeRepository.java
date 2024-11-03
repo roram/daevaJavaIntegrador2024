@@ -8,10 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface ViajeRepository extends CrudRepository<Viaje, Long> {
-/*
-    List<Viaje> findAll();
-    void eliminarViaje(Long id);
-    Viaje findById(long id);
-    void save (Viaje viaje);*/
+
 }
