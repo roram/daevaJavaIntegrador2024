@@ -46,4 +46,35 @@ public class MicroRepositoryTests {
 
   }
 
+  @Test
+  @Order(3)
+  public void actualizarMicroTest(){
+    Micro micro = this.microRepository.findById(1L).get();
+
+    micro.setModelo("MODELO 2");
+
+    Micro microActualizado = this.microRepository.save(micro);
+
+    Assertions.assertThat(microActualizado.getModelo()).isEqualTo("MODELO 2");
+
+  }
+
+  @Test
+  @Order(4)
+  public void borrarMicroTest(){
+
+    this.microRepository.deleteById(1L);
+
+    Micro micro = null;
+
+    Optional<Micro> optionalMicro = microRepository.findById(1L);
+
+    if(optionalMicro.isPresent()){
+      micro = optionalMicro.get();
+    }
+
+    Assertions.assertThat(micro).isNull();
+
+  }
+
 }
