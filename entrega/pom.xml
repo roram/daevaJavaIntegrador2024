@@ -33,6 +33,13 @@
   </properties>
   <dependencies>
 
+    <!-- DEPENDENCIAS PARA TRABAJAR CON FECHAS -->
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.13.0</version>
+    </dependency>
+
     <!-- TIENE QUE IR PRIMERO LOMBOK O NO CREA EL MAPPER BIEN -->
     <dependency>
       <groupId>org.projectlombok</groupId>

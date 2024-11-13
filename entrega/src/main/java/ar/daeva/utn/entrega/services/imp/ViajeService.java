@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +31,7 @@ public class ViajeService implements ItViajesService {
     @Override
     public ViajeOutput crearViaje(ViajeInput viajeInput) {
 
+        //TODO: IMPLEMENTAR CON SERCVICIO
         Optional<Micro> micro = this.microRepository.findById(viajeInput.getMicroId());
 
         if(micro.isPresent()){
@@ -38,9 +41,6 @@ public class ViajeService implements ItViajesService {
             nuevoViaje.setMicro(micro.get());
 
             ViajeOutput viajeOutput = ViajeMapper.INSTANCE.viajeToDtoOutput(this.viajeRepository.save(nuevoViaje));
-
-            System.out.println("DATOS GUARDADOS DE VIAJE");
-            System.out.println(viajeOutput);
 
             return viajeOutput;
 
@@ -71,6 +71,7 @@ public class ViajeService implements ItViajesService {
     @Override
     public ViajeOutput modificarViaje(ViajeInput viajeInput, Long id) {
         Optional<Viaje> busquedaViaje = this.viajeRepository.findById(id);
+        //TODO: IMPLEMENTAR CON SERCVICIO
         Optional<Micro> micro = this.microRepository.findById(viajeInput.getMicroId());
 
         if(busquedaViaje.isPresent() && micro.isPresent()){
@@ -98,5 +99,18 @@ public class ViajeService implements ItViajesService {
         return List.of();
     }
 
+    @Override
+    public List<ViajeOutput> listaViajesPorFecha(LocalDate fechaHoraPartida, LocalDate fechaHoraLlegada){
+        List<Viaje> listaViajes = this.viajeRepository.findViajeByfechaHoraPartida(fechaHoraPartida);
 
+        List<ViajeOutput> listaViajesOutput = new ArrayList<>();
+
+        for(Viaje viaje : listaViajes){
+            ViajeOutput viajeOutput = ViajeMapper.INSTANCE.viajeToDtoOutput(viaje);
+            listaViajesOutput.add(viajeOutput);
+        }
+
+        return listaViajesOutput;
+
+    }
 }

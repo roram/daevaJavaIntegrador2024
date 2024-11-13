@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -56,6 +58,21 @@ public class ViajeController {
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.viajesService.modificarViaje(viajeNuevo, id));
+                .body(viajeOutput);
+    }
+
+    @GetMapping("/fecha")
+    public ResponseEntity<List<ViajeOutput>> obtenerViajesPorFecha(@RequestParam String fechaHoraPartida,
+                                                                   @RequestParam String fechaHoraLlegada)
+    {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        LocalDate fechaHoraPartidaLD = LocalDate.parse(fechaHoraPartida, formatter);
+        LocalDate fechaHoraLlegadaLD = LocalDate.parse(fechaHoraLlegada, formatter);
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.viajesService.listaViajesPorFecha(fechaHoraPartidaLD, fechaHoraLlegadaLD));
+
     }
 }

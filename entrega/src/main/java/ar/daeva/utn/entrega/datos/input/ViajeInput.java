@@ -15,18 +15,17 @@ import java.util.Date;
 public class ViajeInput {
 
     private Long microId;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDate fechaHoraPartida;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private LocalDate fechaHoraLlegada;
+    private String ciudadOrigen;
+    private String ciudadDestino;
 
     @Override
     public String toString(){
 
         return
                 "ID micro: " + this.microId + " " +
-                "Fecha Hora de Partida: " + this.fechaHoraPartida + " " +
-                "Fecha Hora de Llegada: " + this.fechaHoraLlegada;
+                "Fecha Hora de Partida: " + this.fechaHoraPartida + " " ;
 
     }
 

@@ -1,7 +1,9 @@
 package ar.daeva.utn.entrega.models.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -9,13 +11,15 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name="viaje")
 public class Viaje {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "micro_id")
     private Micro micro;
     @Column
@@ -23,17 +27,7 @@ public class Viaje {
     @Column
     private LocalDate fechaHoraLlegada;
     @OneToOne
-    private Ciudades ciudades;
-
-    public Viaje(){}
-
-    public Viaje(Long id, Micro micro, LocalDate fechaHoraPartida, LocalDate fechaHoraLlegada, Ciudades ciudades){
-        this.id = id;
-        this.micro = micro;
-        this.fechaHoraPartida = fechaHoraPartida;
-        this.fechaHoraLlegada = fechaHoraLlegada;
-        this.ciudades = ciudades;
-    }
+    private Ciudades ciudad;
 
     @Override
     public String toString(){
@@ -41,7 +35,7 @@ public class Viaje {
                 this.micro.toString() + " " +
                 "Fecha Hora Partida: " + this.fechaHoraPartida.toString() + " " +
                 "Fecha Hora de Llegada: " + this.fechaHoraLlegada.toString() + " " +
-                "Distancia: " + this.ciudades;
+                "Distancia: " + this.ciudad;
     }
 
 }
