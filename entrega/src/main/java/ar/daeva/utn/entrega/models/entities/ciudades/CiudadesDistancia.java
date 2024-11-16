@@ -1,4 +1,4 @@
-package ar.daeva.utn.entrega.models.entities;
+package ar.daeva.utn.entrega.models.entities.ciudades;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,4 +30,14 @@ public class CiudadesDistancia {
   private Ciudades ciudadDestino;
   @Column
   private Integer distancia;
+
+  @Override
+  public String toString(){
+
+    return  "ID: " + this.id + "\n" +
+            "Ciudad Origen: " + this.ciudadOrigen + "\n" +
+            "Ciudad Destino: " + this.ciudadDestino + "\n" +
+            "Distancia: " + this.distancia + "\n";
+
+  }
 }

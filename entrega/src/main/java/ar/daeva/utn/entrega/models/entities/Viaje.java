@@ -1,5 +1,6 @@
 package ar.daeva.utn.entrega.models.entities;
 
+import ar.daeva.utn.entrega.models.entities.ciudades.CiudadesDistancia;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,15 +28,7 @@ public class Viaje {
     @Column
     private LocalDate fechaHoraLlegada;
     @OneToOne
-    private Ciudades ciudad;
+    private CiudadesDistancia ruta;
 
-    @Override
-    public String toString(){
-        return
-                this.micro.toString() + " " +
-                "Fecha Hora Partida: " + this.fechaHoraPartida.toString() + " " +
-                "Fecha Hora de Llegada: " + this.fechaHoraLlegada.toString() + " " +
-                "Distancia: " + this.ciudad;
-    }
 
 }

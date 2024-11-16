@@ -5,6 +5,7 @@ import ar.daeva.utn.entrega.datos.output.ciudades.CiudadesOutputDTO;
 import ar.daeva.utn.entrega.services.imp.CiudadesService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,7 @@ public class CiudadesController {
   }
 
   @GetMapping
-  public ResponseEntity<CiudadesOutputDTO> obtenerCiudadPorNombre(@RequestParam String ciudad){
+  public ResponseEntity<CiudadesOutputDTO> obtenerCiudadPorNombre(@RequestParam String ciudad) throws ChangeSetPersister.NotFoundException {
 
     CiudadesOutputDTO ciudadesOutputDTO = this.ciudadesService.obtenerCiudadPorNombre(ciudad);
 

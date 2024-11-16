@@ -4,7 +4,7 @@ package ar.daeva.utn.entrega.mapper;
 import ar.daeva.utn.entrega.datos.input.ciudades.CiudadesInputDTO;
 
 import ar.daeva.utn.entrega.datos.output.ciudades.CiudadesOutputDTO;
-import ar.daeva.utn.entrega.models.entities.Ciudades;
+import ar.daeva.utn.entrega.models.entities.ciudades.Ciudades;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

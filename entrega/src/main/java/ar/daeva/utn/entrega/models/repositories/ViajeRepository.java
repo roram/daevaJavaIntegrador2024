@@ -13,4 +13,6 @@ import java.util.Optional;
 @Repository
 public interface ViajeRepository extends CrudRepository<Viaje, Long> {
   List<Viaje> findViajeByfechaHoraPartida(LocalDate fechaHoraPartida);
+
+
 }

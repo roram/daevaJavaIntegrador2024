@@ -1,16 +1,16 @@
 package ar.daeva.utn.entrega.services.imp;
 
-import ar.daeva.utn.entrega.datos.input.ciudades.CiudadesDistanciaInputDTO;
 import ar.daeva.utn.entrega.datos.input.ciudades.CiudadesInputDTO;
-import ar.daeva.utn.entrega.datos.output.ciudades.CiudadesDistanciaOutputDTO;
 import ar.daeva.utn.entrega.datos.output.ciudades.CiudadesOutputDTO;
 import ar.daeva.utn.entrega.mapper.CiudadesMapper;
-import ar.daeva.utn.entrega.models.entities.Ciudades;
-import ar.daeva.utn.entrega.models.entities.CiudadesDistancia;
+import ar.daeva.utn.entrega.models.entities.ciudades.Ciudades;
 import ar.daeva.utn.entrega.models.repositories.CiudadesRepository;
 import ar.daeva.utn.entrega.services.ICiudadesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CiudadesService implements ICiudadesService {
@@ -35,15 +35,15 @@ public class CiudadesService implements ICiudadesService {
   }
 
   @Override
-  public CiudadesOutputDTO obtenerCiudadPorNombre(String ciudadBusqueda) {
-    Ciudades obtenerCiudad = this.ciudadesRepository.findCiudadesByCiudad(ciudadBusqueda);
+  public CiudadesOutputDTO obtenerCiudadPorNombre(String ciudadBusqueda) throws ChangeSetPersister.NotFoundException {
+    Optional<Ciudades> obtenerCiudad = Optional.ofNullable(this.ciudadesRepository.findCiudadesByCiudad(ciudadBusqueda));
 
-    CiudadesOutputDTO ciudadesOutputDTO = CiudadesMapper.INSTANCE.ciudadesToDtoOutput(
-            this.ciudadesRepository.save(obtenerCiudad));
-
-    if(ciudadesOutputDTO == null){
+    if(obtenerCiudad.isEmpty()){
       return null;
     }
+
+    CiudadesOutputDTO ciudadesOutputDTO = CiudadesMapper.INSTANCE.ciudadesToDtoOutput(
+            obtenerCiudad.get());
 
     return ciudadesOutputDTO;
   }

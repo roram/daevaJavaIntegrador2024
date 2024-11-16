@@ -1,4 +1,4 @@
-package ar.daeva.utn.entrega.models.entities;
+package ar.daeva.utn.entrega.models.entities.ciudades;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
