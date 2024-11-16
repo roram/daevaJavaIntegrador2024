@@ -1,15 +1,15 @@
 package ar.daeva.utn.entrega.controllers;
 
 import ar.daeva.utn.entrega.datos.input.ViajeInput;
-import ar.daeva.utn.entrega.datos.output.MicroOutputDTO;
 import ar.daeva.utn.entrega.datos.output.ViajeOutput;
 import ar.daeva.utn.entrega.services.ItViajesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class ViajeController {
                 .body(this.viajesService.buscarTodos());
     }
     @PostMapping
-    public ResponseEntity<ViajeOutput> cargarViaje(@RequestBody ViajeInput viaje){
+    public ResponseEntity<ViajeOutput> cargarViaje(@RequestBody ViajeInput viaje) throws ChangeSetPersister.NotFoundException {
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -67,8 +67,8 @@ public class ViajeController {
     {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-        LocalDate fechaHoraPartidaLD = LocalDate.parse(fechaHoraPartida, formatter);
-        LocalDate fechaHoraLlegadaLD = LocalDate.parse(fechaHoraLlegada, formatter);
+        LocalDateTime fechaHoraPartidaLD = LocalDateTime.parse(fechaHoraPartida);
+        LocalDateTime fechaHoraLlegadaLD = LocalDateTime.parse(fechaHoraLlegada);
 
         return ResponseEntity
                 .status(HttpStatus.OK)

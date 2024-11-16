@@ -5,7 +5,7 @@ import ar.daeva.utn.entrega.datos.output.ciudades.CiudadesDistanciaOutputDTO;
 import ar.daeva.utn.entrega.datos.output.ciudades.CiudadesOutputDTO;
 import ar.daeva.utn.entrega.mapper.CiudadesDistanciaMapper;
 import ar.daeva.utn.entrega.mapper.CiudadesMapper;
-import ar.daeva.utn.entrega.models.entities.ciudades.Ciudades;
+import ar.daeva.utn.entrega.models.entities.ciudades.Ciudad;
 import ar.daeva.utn.entrega.models.entities.ciudades.CiudadesDistancia;
 import ar.daeva.utn.entrega.datos.output.ciudades.RutaOutputDTO;
 import ar.daeva.utn.entrega.models.repositories.ciudadesDistancia.CiudadesDistanciaRepository;
@@ -34,8 +34,8 @@ public class CiudadesDistanciaService implements ICiudadesDistanciaService {
       return null;
     }
 
-    Ciudades ciudadOrigen = CiudadesMapper.INSTANCE.dtoOutputToCiudades(ciudadOrigenDTO);
-    Ciudades ciudadDestino = CiudadesMapper.INSTANCE.dtoOutputToCiudades(ciudadDestinoDTO);
+    Ciudad ciudadOrigen = CiudadesMapper.INSTANCE.dtoOutputToCiudades(ciudadOrigenDTO);
+    Ciudad ciudadDestino = CiudadesMapper.INSTANCE.dtoOutputToCiudades(ciudadDestinoDTO);
 
     CiudadesDistancia nuevaDistancia = new CiudadesDistancia();
 
@@ -59,8 +59,8 @@ public class CiudadesDistanciaService implements ICiudadesDistanciaService {
       return null;
     }
 
-    Ciudades ciudadOrigen = CiudadesMapper.INSTANCE.dtoOutputToCiudades(ciudadOrigenDTO.get());
-    Ciudades ciudadDestino = CiudadesMapper.INSTANCE.dtoOutputToCiudades(ciudadDestinoDTO.get());
+    Ciudad ciudadOrigen = CiudadesMapper.INSTANCE.dtoOutputToCiudades(ciudadOrigenDTO.get());
+    Ciudad ciudadDestino = CiudadesMapper.INSTANCE.dtoOutputToCiudades(ciudadDestinoDTO.get());
 
     Optional<RutaOutputDTO> rutaOutputDTO = Optional.ofNullable(ciudadesDistanciaRepository
             .findByCiudadOrigenAndCiudadDestino(ciudadOrigen.getId(), ciudadDestino.getId()));

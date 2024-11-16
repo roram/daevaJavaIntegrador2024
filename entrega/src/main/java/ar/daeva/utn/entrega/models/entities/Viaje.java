@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -24,9 +24,9 @@ public class Viaje {
     @JoinColumn(name = "micro_id")
     private Micro micro;
     @Column
-    private LocalDate fechaHoraPartida;
+    private LocalDateTime fechaHoraPartida;
     @Column
-    private LocalDate fechaHoraLlegada;
+    private LocalDateTime fechaHoraLlegada;
     @OneToOne
     private CiudadesDistancia ruta;
 

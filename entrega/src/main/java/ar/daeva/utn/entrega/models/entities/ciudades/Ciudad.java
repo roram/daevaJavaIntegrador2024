@@ -14,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name="ciudades")
-public class Ciudades {
+public class Ciudad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -25,9 +25,9 @@ public class CiudadesDistancia {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @OneToOne
-  private Ciudades ciudadOrigen;
+  private Ciudad ciudadOrigen;
   @OneToOne
-  private Ciudades ciudadDestino;
+  private Ciudad ciudadDestino;
   @Column
   private Integer distancia;
 

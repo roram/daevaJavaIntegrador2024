@@ -1,6 +1,6 @@
 package ar.daeva.utn.entrega.datos.output.ciudades;
 
-import ar.daeva.utn.entrega.models.entities.ciudades.Ciudades;
+import ar.daeva.utn.entrega.models.entities.ciudades.Ciudad;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,7 @@ import lombok.Setter;
 @Builder
 public class CiudadesDistanciaOutputDTO {
   private Long id;
-  private Ciudades ciudadOrigen;
-  private Ciudades ciudadDestino;
+  private Ciudad ciudadOrigen;
+  private Ciudad ciudadDestino;
   private Integer distancia;
 }
