@@ -30,7 +30,7 @@ public class ViajeService implements ItViajesService {
 
     @Override
     public ViajeOutput crearViaje(ViajeInput viajeInput) {
-
+/*
         //TODO: IMPLEMENTAR CON SERCVICIO
         Optional<Micro> micro = this.microRepository.findById(viajeInput.getMicroId());
 
@@ -45,7 +45,7 @@ public class ViajeService implements ItViajesService {
             return viajeOutput;
 
         }
-
+*/
         return null;
 
     }
@@ -70,7 +70,7 @@ public class ViajeService implements ItViajesService {
 
     @Override
     public ViajeOutput modificarViaje(ViajeInput viajeInput, Long id) {
-        Optional<Viaje> busquedaViaje = this.viajeRepository.findById(id);
+        /*Optional<Viaje> busquedaViaje = this.viajeRepository.findById(id);
         //TODO: IMPLEMENTAR CON SERCVICIO
         Optional<Micro> micro = this.microRepository.findById(viajeInput.getMicroId());
 
@@ -89,7 +89,7 @@ public class ViajeService implements ItViajesService {
 
             return viajeOutput;
 
-        }
+        }*/
 
         return null;
     }

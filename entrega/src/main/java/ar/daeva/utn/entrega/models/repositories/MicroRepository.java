@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MicroRepository extends CrudRepository<Micro, Long> {
-
+  Micro findMicroByPatente(String patente);
 }

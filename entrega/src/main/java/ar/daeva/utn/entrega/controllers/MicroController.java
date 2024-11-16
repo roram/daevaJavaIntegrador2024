@@ -60,4 +60,18 @@ public class MicroController {
             .status(HttpStatus.OK)
             .body(microOutputDTO);
   }
+
+  @GetMapping
+  public ResponseEntity<MicroOutputDTO> buscarMicroPorPatente(@RequestParam String patente){
+
+    MicroOutputDTO microOutputDTO = this.microService.buscarMicroPorPatente(patente);
+
+    if(microOutputDTO == null){
+      return ResponseEntity.notFound().build();
+    }
+
+    return ResponseEntity.status(HttpStatus.OK).body(microOutputDTO);
+
+  }
+
 }

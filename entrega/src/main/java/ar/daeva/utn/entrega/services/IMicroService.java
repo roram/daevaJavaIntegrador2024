@@ -14,4 +14,6 @@ public interface IMicroService {
   void eliminarMicro(Long id);
 
   MicroOutputDTO modificarMicro(MicroInputDTO microInputDTO, Long id);
+
+  MicroOutputDTO buscarMicroPorPatente(String patente);
 }

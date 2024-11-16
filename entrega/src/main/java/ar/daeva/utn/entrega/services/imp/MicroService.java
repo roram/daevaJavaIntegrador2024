@@ -71,4 +71,21 @@ public class MicroService implements IMicroService {
     return null;
   }
 
+  @Override
+  public MicroOutputDTO buscarMicroPorPatente(String patente) {
+    Optional<Micro> busquedaMicro = Optional.ofNullable(this.microRepository.findMicroByPatente(patente));
+
+    if (busquedaMicro.isPresent()){
+
+      MicroOutputDTO microToDtoOutput = MicroMapper.INSTANCE.microToDtoOutput(busquedaMicro.get());
+
+      return microToDtoOutput;
+
+    }
+
+    return null;
+
+  }
+
+
 }
